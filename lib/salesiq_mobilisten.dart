@@ -88,6 +88,13 @@ class ZohoSalesIQ {
     await _channel.invokeMethod('unregisterVisitor');
   }
 
+  /// Set bubble mode for launcher.
+  /// [mode] value is `1` (STATIC) by default on Android.
+  /// This function only is only supported on Android.
+  static Future<Null> setLauncherProperties(int mode) async {
+    await _channel.invokeMethod('setLauncherProperties', mode);
+  }
+
   /// Sets the current page title to be shown in the visitor footpath on the SalesIQ console.
   static Future<Null> setPageTitle(String pageTitle) async {
     await _channel.invokeMethod('setPageTitle', pageTitle);

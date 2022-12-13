@@ -13,6 +13,7 @@ import android.util.Base64;
 import androidx.annotation.NonNull;
 
 import com.zoho.commons.ChatComponent;
+import com.zoho.commons.LauncherProperties;
 import com.zoho.livechat.android.NotificationListener;
 import com.zoho.livechat.android.SIQDepartment;
 import com.zoho.livechat.android.SIQVisitor;
@@ -217,6 +218,10 @@ public class MobilistenPlugin implements FlutterPlugin, MethodCallHandler, Activ
             case "unregisterVisitor":  //need to pass the current activity
                 ZohoSalesIQ.unregisterVisitor(activity);  //need to pass the current activity
                 break;
+
+            case "setLauncherProperties":
+                LauncherProperties launcherProperties = new LauncherProperties(LiveChatUtil.getInteger(call.arguments));
+                ZohoSalesIQ.setLauncherProperties(launcherProperties);
 
             case "setPageTitle":
                 ZohoSalesIQ.Tracking.setPageTitle(LiveChatUtil.getString(call.arguments));
